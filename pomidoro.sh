@@ -9,7 +9,20 @@ countdown() {
     done
 }
 
-read -p "Which time?"
+read -p "How long should work be?" WORK
 
-countdown $REPLY
-play $SONG
+read -p "How long should break be?" BREAK
+
+read -p "How many cicles should it be?" CIRCLE
+
+for ((c=1; c<=$CIRCLE; c++))
+do 
+  read -p "press enter to start a work"
+  echo "You are doing $c CIRCLE"
+  countdown $WORK
+  play $SONG
+  read -p "press enter to start a break"
+  countdown $BREAK
+  play $SONG
+done
+
