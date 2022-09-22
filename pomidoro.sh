@@ -1,4 +1,5 @@
 #!/bin/sh
+source ./.env
 countdown() {
     start="$(( $(date '+%s') + $1))"
     while [ $start -ge $(date +%s) ]; do
@@ -11,4 +12,4 @@ countdown() {
 read -p "Which time?"
 
 countdown $REPLY
-play /home/mlappi/Github/study/pomidoro/cut_music_timer.mp3
+play $SONG
