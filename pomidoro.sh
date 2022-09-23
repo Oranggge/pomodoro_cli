@@ -9,11 +9,33 @@ countdown() {
     done
 }
 
-read -p "How long should work be?" WORK
+while getopts w:b:c: flag
+do 
+  case "$flag" in 
+    w) WORK=${OPTARG};;
+    b) BREAK=${OPTARG};;
+    c) CIRCLE=${OPTARG}
+  esac
+done
 
-read -p "How long should break be?" BREAK
+echo $WORK $BREAK $CIRCLE
 
-read -p "How many cicles should it be?" CIRCLE
+set -o history
+
+if [ -z "$WORK" ]
+then 
+  read -p "How long should work be?" WORK
+fi 
+
+if [ -z "$BREAK" ]
+  then 
+  read -p "How long should break be?" BREAK
+fi
+
+if [ -z "$CIRCLE" ]
+  then 
+  read -p "How many cicles should it be?" CIRCLE
+fi
 
 for ((c=1; c<=$CIRCLE; c++))
 do 
